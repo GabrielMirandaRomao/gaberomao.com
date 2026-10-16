@@ -1,26 +1,81 @@
 @import "tailwindcss";
 
+/* Paleta inspirada no yudiganeko.com. O modo escuro segue o sistema operacional. */
 :root {
+  --palladian: #f9f7f4;
+  --oatmeal: #c9c1b1;
+  --blue-fantastic: #2c3b4d;
+  --burning-flame: #ffb162;
+  --truffle-trouble: #a35139;
+  --abyssal: #1b2632;
+
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: var(--blue-fantastic);
+  --body-color: var(--blue-fantastic);
+  --surface: #ffffff; /* cards e moldura do roadmap */
+  --surface-soft: #f4f0e8; /* hover e fundos discretos */
+  --line: color-mix(in srgb, var(--oatmeal) 60%, transparent);
+  --muted: color-mix(in srgb, var(--blue-fantastic) 70%, transparent);
+  --accent: var(--truffle-trouble);
+  --flame: var(--burning-flame);
+  --ring-bg: #ffffff; /* anel em volta das bolinhas da linha do tempo */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--abyssal);
+    --foreground: var(--palladian);
+    --body-color: #d8d2c4;
+    --surface: #213040;
+    --surface-soft: #2c3b4d;
+    --line: #3a4a5d;
+    --muted: #9aa5b2;
+    --accent: var(--burning-flame);
+    --ring-bg: var(--abyssal);
+    color-scheme: dark;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-flame: var(--flame);
+  --color-ring-bg: var(--ring-bg);
+  --color-palladian: var(--palladian);
+  --color-oatmeal: var(--oatmeal);
+  --color-blue-fantastic: var(--blue-fantastic);
+  --color-truffle-trouble: var(--truffle-trouble);
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, Consolas, monospace;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--body-color);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--flame);
+  outline-offset: 2px;
+}
+
+/* Cursor piscando da animação do nome */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-blink {
+    animation: none;
+  }
 }
