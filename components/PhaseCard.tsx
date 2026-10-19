@@ -84,6 +84,17 @@ export function PhaseCard({ phase, index, done, onToggle }: Props) {
                   <span className="grid min-w-0 gap-0.5 leading-6">
                     <span className={isDone ? "text-muted line-through decoration-oatmeal" : "text-foreground"}>
                       <Rich text={topic.name} />
+                      {/* Link dentro do label: clicar nele abre a página sem marcar o checkbox */}
+                      {topic.url && (
+                        <a
+                          href={topic.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="ml-2 inline-block text-xs whitespace-nowrap text-accent no-underline decoration-accent underline-offset-2 hover:underline"
+                        >
+                          estudar <span aria-hidden="true">↗</span>
+                        </a>
+                      )}
                     </span>
                     {topic.hint && (
                       <span className="text-xs text-muted">

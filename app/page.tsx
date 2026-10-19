@@ -12,8 +12,8 @@ export default function Home() {
         <Hero />
         <Roadmap />
         <Resources />
-        <About />
-        <Experiences />
+        {/* <About /> */}
+        {/* <Experiences /> */}
         <footer className="mt-20 text-center text-sm text-muted">
           Criado por {profile.name} usando Next.js e TailwindCSS.
         </footer>
